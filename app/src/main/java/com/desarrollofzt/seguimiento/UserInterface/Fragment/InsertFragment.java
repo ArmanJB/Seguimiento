@@ -1,6 +1,7 @@
 package com.desarrollofzt.seguimiento.UserInterface.Fragment;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;

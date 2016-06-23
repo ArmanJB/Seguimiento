@@ -5,67 +5,102 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/l1">
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="@dimen/activity_horizontal_margin">
 
-
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/fecha"
+                android:id="@+id/fechaImage"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Fecha de la Visita"
                 android:id="@+id/fecha_label"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:paddingTop="5dp"
                 android:textColor="@color/colorPrimary"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/fechaImage" />
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="2016/06/17"
                 android:id="@+id/fecha"
                 android:layout_below="@+id/fecha_label"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:layout_toEndOf="@+id/fechaImage"/>
 
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/area"
+                android:id="@+id/areaImage"
+                android:layout_marginRight="10dp"
+                android:layout_below="@+id/fecha"
+                android:layout_marginTop="20dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Área"
                 android:id="@+id/areaLabel"
-                android:paddingTop="16dp"
+                android:paddingTop="15dp"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
-                android:layout_below="@+id/fecha"/>
+                android:layout_below="@+id/fecha"
+                android:layout_toEndOf="@+id/areaImage"/>
             <Spinner
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/idArea"
-                android:layout_below="@+id/areaLabel" />
+                android:layout_below="@+id/areaLabel"
+                android:layout_toEndOf="@+id/areaImage"/>
 
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/dep"
+                android:id="@+id/depImage"
+                android:layout_marginRight="10dp"
+                android:layout_below="@+id/idArea"
+                android:layout_marginTop="20dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Departamento"
                 android:id="@+id/departamentoLabel"
-                android:paddingTop="16dp"
+                android:paddingTop="15dp"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
-                android:layout_below="@+id/idArea"/>
+                android:layout_below="@+id/idArea"
+                android:layout_toEndOf="@+id/depImage"/>
             <Spinner
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/idDepartamento"
-                android:layout_below="@+id/departamentoLabel" />
+                android:layout_below="@+id/departamentoLabel"
+                android:layout_toEndOf="@+id/depImage"/>
 
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/escuela"
+                android:id="@+id/escuelaImage"
+                android:layout_marginRight="10dp"
+                android:layout_below="@+id/idDepartamento"
+                android:layout_marginTop="20dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,13 +110,23 @@
                 android:paddingTop="16dp"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
-                android:layout_below="@+id/idDepartamento"/>
+                android:layout_below="@+id/idDepartamento"
+                android:layout_toEndOf="@+id/escuelaImage"/>
             <Spinner
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/idEscuela"
-                android:layout_below="@+id/escuelaLabel" />
+                android:layout_below="@+id/escuelaLabel"
+                android:layout_toEndOf="@+id/escuelaImage"/>
 
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/oficial"
+                android:id="@+id/oficialImage"
+                android:layout_marginRight="10dp"
+                android:layout_below="@+id/idEscuela"
+                android:layout_marginTop="20dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -91,13 +136,23 @@
                 android:paddingTop="16dp"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
-                android:layout_below="@+id/idEscuela"/>
+                android:layout_below="@+id/idEscuela"
+                android:layout_toEndOf="@+id/oficialImage"/>
             <Spinner
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/idOficial"
-                android:layout_below="@+id/oficialLabel" />
+                android:layout_below="@+id/oficialLabel"
+                android:layout_toEndOf="@+id/oficialImage"/>
 
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/motivo"
+                android:id="@+id/motivoImage"
+                android:layout_marginRight="10dp"
+                android:layout_below="@+id/idOficial"
+                android:layout_marginTop="20dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -107,13 +162,15 @@
                 android:paddingTop="16dp"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
-                android:layout_below="@+id/idOficial"/>
+                android:layout_below="@+id/idOficial"
+                android:layout_toEndOf="@+id/motivoImage"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:id="@+id/idMotivos"
-                android:layout_below="@+id/motivosLabel">
+                android:layout_below="@+id/motivosLabel"
+                android:layout_toEndOf="@+id/motivoImage">
             </LinearLayout>
 
             <TextView
@@ -125,13 +182,15 @@
                 android:paddingTop="16dp"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
-                android:layout_below="@+id/idMotivos"/>
+                android:layout_below="@+id/idMotivos"
+                android:layout_toEndOf="@+id/motivoImage"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:id="@+id/idOtrosMotivos"
-                android:layout_below="@+id/otrosMotivosLabel">
+                android:layout_below="@+id/otrosMotivosLabel"
+                android:layout_toEndOf="@+id/motivoImage">
             </LinearLayout>
 
         </RelativeLayout>

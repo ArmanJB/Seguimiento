@@ -56,8 +56,9 @@ public class InsertFragment extends Fragment {
     private List<String> areasS = new ArrayList<String>();
     private List<String> departamentosS = new ArrayList<String>();
     private List<String> oficialesS = new ArrayList<String>();
-    private List<String> motivosS = new ArrayList<String>();
     private List<String> escuelasS = new ArrayList<String>();
+    private List<String> motivosS = new ArrayList<String>();
+    private List<String> otrosMotivosS = new ArrayList<String>();
 
     TextView fechaF;
     Spinner idAreaF;
@@ -65,6 +66,7 @@ public class InsertFragment extends Fragment {
     Spinner idEscuelaF;
     Spinner idOficialF;
     LinearLayout mot;
+    LinearLayout otrosMot;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -82,6 +84,7 @@ public class InsertFragment extends Fragment {
         idOficialF = (Spinner) v.findViewById(R.id.idOficial);
         fechaF = (TextView) v.findViewById(R.id.fecha);
         mot = (LinearLayout) v.findViewById(R.id.idMotivos);
+        otrosMot = (LinearLayout) v.findViewById(R.id.idOtrosMotivos);
 
         cargarDatos();
 
@@ -99,6 +102,10 @@ public class InsertFragment extends Fragment {
                     if(a.getNombre() == parent.getItemAtPosition(position).toString()){
                         cargarOficiales(a.getId() );
                         cargarMotivos(a.getId(), mot);
+                        cargarOtrosMotivos("4", otrosMot);
+                        if (a.getId().equals("4")){
+                            otrosMot.removeAllViews();
+                        }
                         break;
                     }
                 }
@@ -184,6 +191,20 @@ public class InsertFragment extends Fragment {
                 }
             }
             id++;
+        }
+
+        int id2 = 200;
+        for(String m : motivosS){
+            CheckBox c = (CheckBox) getView().findViewById(id2+1);
+            if(c.isChecked() ) {
+                for(Motivo mot : motivos){
+                    if (c.getText() == mot.getNombre()){
+                        id_motivo.put(mot.getId() );
+                        break;
+                    }
+                }
+            }
+            id2++;
         }
 
         HashMap<String, String> map = new HashMap<>();
@@ -393,6 +414,24 @@ public class InsertFragment extends Fragment {
         v.removeAllViews();
         int ids = 100;
         for(String m : motivosS){
+            CheckBox opcion = new CheckBox(getContext());
+            opcion.setText(m);
+            opcion.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            opcion.setId(ids+1);
+            v.addView(opcion);
+            ids++;
+        }
+    }
+    private void cargarOtrosMotivos(String id, LinearLayout v){
+        otrosMotivosS.clear();
+        for(Motivo m : motivos){
+            if (m.getId_area().equals(id) ){
+                otrosMotivosS.add(m.getNombre());
+            }
+        }
+        v.removeAllViews();
+        int ids = 200;
+        for(String m : otrosMotivosS){
             CheckBox opcion = new CheckBox(getContext());
             opcion.setText(m);
             opcion.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));

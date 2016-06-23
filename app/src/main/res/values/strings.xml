@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Seguimiento</string>
+
+
+
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Cancelar</string>
+    <string name="dialog_discard">¿Descartar Cambios?</string>
+
+    <string-array name="escuelas">
+        <!--<item>Mujer</item>-->
+    </string-array>
+
+    <string-array name="oficiales">
+
+    </string-array>
+</resources>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/l1">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/activity_horizontal_margin">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Fecha de la Visita"
+                android:id="@+id/fecha_label"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:paddingTop="16dp"
+                android:textColor="@android:color/black" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="2016/06/17"
+                android:id="@+id/fecha"
+                android:layout_below="@+id/fecha_label" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Área"
+                android:id="@+id/areaLabel"
+                android:paddingTop="16dp"
+                android:textColor="@android:color/black"
+                android:layout_below="@+id/fecha"/>
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/idArea"
+                android:layout_below="@+id/areaLabel" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Departamento"
+                android:id="@+id/departamentoLabel"
+                android:paddingTop="16dp"
+                android:textColor="@android:color/black"
+                android:layout_below="@+id/idArea"/>
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/idDepartamento"
+                android:layout_below="@+id/departamentoLabel" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Escuela"
+                android:id="@+id/escuelaLabel"
+                android:paddingTop="16dp"
+                android:textColor="@android:color/black"
+                android:layout_below="@+id/idDepartamento"/>
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/idEscuela"
+                android:layout_below="@+id/escuelaLabel" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Oficial"
+                android:id="@+id/oficialLabel"
+                android:paddingTop="16dp"
+                android:textColor="@android:color/black"
+                android:layout_below="@+id/idEscuela"/>
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/idOficial"
+                android:layout_below="@+id/oficialLabel" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Motivos"
+                android:id="@+id/motivosLabel"
+                android:paddingTop="16dp"
+                android:textColor="@android:color/black"
+                android:layout_below="@+id/idOficial"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/idMotivos"
+                android:layout_below="@+id/motivosLabel">
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

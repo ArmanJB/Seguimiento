@@ -103,9 +103,6 @@ public class InsertFragment extends Fragment {
                         cargarOficiales(a.getId() );
                         cargarMotivos(a.getId(), mot);
                         cargarOtrosMotivos("4", otrosMot);
-                        if (a.getId().equals("4")){
-                            otrosMot.removeAllViews();
-                        }
                         break;
                     }
                 }
@@ -179,22 +176,26 @@ public class InsertFragment extends Fragment {
             }
         }
 
-        int id = 100;
-        for(String m : motivosS){
-            CheckBox c = (CheckBox) getView().findViewById(id+1);
-            if(c.isChecked() ) {
-                for(Motivo mot : motivos){
-                    if (c.getText() == mot.getNombre()){
-                        id_motivo.put(mot.getId() );
-                        break;
+        LinearLayout v = (LinearLayout) getView().findViewById(R.id.idMotivos);
+
+        if (v.getChildCount() > 0){
+            int id = 100;
+            for(String m : motivosS){
+                CheckBox c = (CheckBox) getView().findViewById(id+1);
+                if(c.isChecked() ) {
+                    for(Motivo mot : motivos){
+                        if (c.getText() == mot.getNombre()){
+                            id_motivo.put(mot.getId() );
+                            break;
+                        }
                     }
                 }
+                id++;
             }
-            id++;
         }
 
         int id2 = 200;
-        for(String m : motivosS){
+        for(String m : otrosMotivosS){
             CheckBox c = (CheckBox) getView().findViewById(id2+1);
             if(c.isChecked() ) {
                 for(Motivo mot : motivos){
@@ -420,6 +421,9 @@ public class InsertFragment extends Fragment {
             opcion.setId(ids+1);
             v.addView(opcion);
             ids++;
+        }
+        if (id.equals("4")){
+            v.removeAllViews();
         }
     }
     private void cargarOtrosMotivos(String id, LinearLayout v){

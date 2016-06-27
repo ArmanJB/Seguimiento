@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -36,6 +37,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -68,6 +71,7 @@ public class InsertFragment extends Fragment {
     Spinner idOficialF;
     LinearLayout mot;
     LinearLayout otrosMot;
+    EditText idPendienteF;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,6 +90,7 @@ public class InsertFragment extends Fragment {
         fechaF = (TextView) v.findViewById(R.id.fecha);
         mot = (LinearLayout) v.findViewById(R.id.idMotivos);
         otrosMot = (LinearLayout) v.findViewById(R.id.idOtrosMotivos);
+        idPendienteF = (EditText) v.findViewById(R.id.idPendientes);
 
         cargarDatos();
 
@@ -158,9 +163,10 @@ public class InsertFragment extends Fragment {
 
     public void guardarVisita(){
         final String fecha = fechaF.getText().toString();
+        final String pendiente = idPendienteF.getText().toString();
         String id_escuela = "";
         String id_oficial = "";
-        JSONArray id_motivo = new JSONArray();
+        String id_motivo = "";
 
         for(Escuela e : escuelas){
             if(e.getNombre() == idEscuelaF.getSelectedItem().toString()){
@@ -186,7 +192,8 @@ public class InsertFragment extends Fragment {
                 if(c.isChecked() ) {
                     for(Motivo mot : motivos){
                         if (c.getText() == mot.getNombre()){
-                            id_motivo.put(mot.getId() );
+                            id_motivo += ","+mot.getId();
+                            //id_motivo.put(mot.getId() );
                             break;
                         }
                     }
@@ -201,7 +208,8 @@ public class InsertFragment extends Fragment {
             if(c.isChecked() ) {
                 for(Motivo mot : motivos){
                     if (c.getText() == mot.getNombre()){
-                        id_motivo.put(mot.getId() );
+                        id_motivo += ","+mot.getId();
+                        //id_motivo.put(mot.getId() );
                         break;
                     }
                 }
@@ -209,7 +217,7 @@ public class InsertFragment extends Fragment {
             id2++;
         }
 
-        HashMap<String, String> map = new HashMap<>();
+        /*HashMap<String, String> map = new HashMap<>();
 
         map.put("fecha", fecha);
         map.put("id_escuela", id_escuela);
@@ -222,10 +230,15 @@ public class InsertFragment extends Fragment {
             e.printStackTrace();
         }
         Log.d(TAG, jobject.toString());
+        Log.d(TAG, Constantes.INSERT+""+ URLEncoder.encode(fecha, "UTF-8")+"/"+
+                    URLEncoder.encode(id_escuela, "UTF-8")+"/"+URLEncoder.encode(id_oficial, "UTF-8")+
+                    "/"+URLEncoder.encode(pendiente, "UTF-8")+"/"+URLEncoder.encode(id_motivo.toString(), "UTF-8"));*/
+        String insert = Constantes.INSERT+fecha+"/"+id_escuela+"/"+id_oficial+"/"+pendiente+"/"+id_motivo.toString();
+        Log.d(TAG, Constantes.INSERT+fecha+"/"+id_escuela+"/"+id_oficial+"/"+pendiente+"/"+id_motivo.toString());
 
         VolleySingleton.getInstance(getActivity()).addToRequestQueue(
-                new JsonObjectRequest(Request.Method.POST, Constantes.INSERT, jobject,
-                        new Response.Listener<JSONObject>() {
+                new JsonObjectRequest(Request.Method.GET, insert.replace(" ", "%20"),
+                        null, new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
                                 procesarRespuesta(response);
@@ -237,7 +250,7 @@ public class InsertFragment extends Fragment {
                                 Log.d(TAG, "Error Volley: " + error.getMessage());
                             }
                         }
-                ) {
+                ) /*{
                     @Override
                     public Map<String, String> getHeaders() {
                         Map<String, String> headers = new HashMap<String, String>();
@@ -250,7 +263,7 @@ public class InsertFragment extends Fragment {
                     public String getBodyContentType() {
                         return "application/json; charset=utf-8" + getParamsEncoding();
                     }
-                }
+                }*/
         );
 
     }
@@ -289,7 +302,7 @@ public class InsertFragment extends Fragment {
     }
 
     public void actualizarFecha(int ano, int mes, int dia) {
-        fechaF.setText(ano + "/" + (mes + 1) + "/" + dia);
+        fechaF.setText(ano + "-" + (mes + 1) + "-" + dia);
     }
 
     public void mostrarDialogo() {
@@ -307,7 +320,7 @@ public class InsertFragment extends Fragment {
         JSONObject jobject = new JSONObject(map);
 
         VolleySingleton.getInstance(getActivity()).addToRequestQueue(
-                new JsonObjectRequest(Request.Method.POST, Constantes.GET, jobject,
+                new JsonObjectRequest(Request.Method.GET, Constantes.GET, null,
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
@@ -319,20 +332,7 @@ public class InsertFragment extends Fragment {
                                 Log.d(TAG, "Error Volley: " + error.toString());
                             }
                         }
-                ){
-                    @Override
-                    public Map<String, String> getHeaders() {
-                        Map<String, String> headers = new HashMap<String, String>();
-                        headers.put("Content-Type", "application/json; charset=utf-8");
-                        headers.put("Accept", "application/json");
-                        return headers;
-                    }
-
-                    @Override
-                    public String getBodyContentType() {
-                        return "application/json; charset=utf-8" + getParamsEncoding();
-                    }
-                }
+                )
         );
     }
 

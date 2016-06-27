@@ -11,15 +11,17 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:padding="@dimen/activity_horizontal_margin">
+            android:padding="@dimen/activity_horizontal_margin"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/fecha"
                 android:id="@+id/fechaImage"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginTop="15dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -35,20 +37,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="2016/06/17"
+                android:text="2016-01-01"
                 android:id="@+id/fecha"
                 android:layout_below="@+id/fecha_label"
                 android:textColor="@android:color/black"
                 android:layout_toEndOf="@+id/fechaImage"/>
 
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/area"
                 android:id="@+id/areaImage"
                 android:layout_marginRight="10dp"
                 android:layout_below="@+id/fecha"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="25dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -68,13 +70,13 @@
                 android:layout_toEndOf="@+id/areaImage"/>
 
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/dep"
                 android:id="@+id/depImage"
                 android:layout_marginRight="10dp"
                 android:layout_below="@+id/idArea"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="25dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -94,13 +96,13 @@
                 android:layout_toEndOf="@+id/depImage"/>
 
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/escuela"
                 android:id="@+id/escuelaImage"
                 android:layout_marginRight="10dp"
                 android:layout_below="@+id/idDepartamento"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="25dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -120,13 +122,13 @@
                 android:layout_toEndOf="@+id/escuelaImage"/>
 
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/oficial"
                 android:id="@+id/oficialImage"
                 android:layout_marginRight="10dp"
                 android:layout_below="@+id/idEscuela"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="25dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -146,13 +148,13 @@
                 android:layout_toEndOf="@+id/oficialImage"/>
 
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/motivo"
                 android:id="@+id/motivoImage"
                 android:layout_marginRight="10dp"
                 android:layout_below="@+id/idOficial"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="25dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -173,6 +175,14 @@
                 android:layout_toEndOf="@+id/motivoImage">
             </LinearLayout>
 
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/motivo"
+                android:id="@+id/otroMotivoImage"
+                android:layout_marginRight="10dp"
+                android:layout_below="@+id/idMotivos"
+                android:layout_marginTop="25dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -183,15 +193,41 @@
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
                 android:layout_below="@+id/idMotivos"
-                android:layout_toEndOf="@+id/motivoImage"/>
+                android:layout_toEndOf="@+id/otroMotivoImage"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:id="@+id/idOtrosMotivos"
                 android:layout_below="@+id/otrosMotivosLabel"
-                android:layout_toEndOf="@+id/motivoImage">
+                android:layout_toEndOf="@+id/otroMotivoImage">
             </LinearLayout>
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/pendiente"
+                android:id="@+id/pendienteImage"
+                android:layout_marginRight="10dp"
+                android:layout_below="@+id/idOtrosMotivos"
+                android:layout_marginTop="25dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Pendientes"
+                android:id="@+id/pendientesLabel"
+                android:paddingTop="16dp"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:layout_below="@+id/idOtrosMotivos"
+                android:layout_toEndOf="@+id/pendienteImage"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/idPendientes"
+                android:layout_below="@+id/pendientesLabel"
+                android:layout_toEndOf="@+id/otroMotivoImage" />
 
         </RelativeLayout>
 

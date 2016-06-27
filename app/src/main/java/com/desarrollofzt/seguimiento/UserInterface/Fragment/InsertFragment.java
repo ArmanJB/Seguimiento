@@ -217,22 +217,11 @@ public class InsertFragment extends Fragment {
             id2++;
         }
 
-        /*HashMap<String, String> map = new HashMap<>();
-
-        map.put("fecha", fecha);
-        map.put("id_escuela", id_escuela);
-        map.put("id_oficial", id_oficial);
-
-        JSONObject jobject = new JSONObject(map);
-        try {
-            jobject.put("motivos", id_motivo);
-        } catch (JSONException e) {
-            e.printStackTrace();
+        if (id_motivo.toString().isEmpty()){
+            Toast.makeText(getActivity(), "Se debe seleccionar al menos un motivo!", Toast.LENGTH_LONG).show();
+            return;
         }
-        Log.d(TAG, jobject.toString());
-        Log.d(TAG, Constantes.INSERT+""+ URLEncoder.encode(fecha, "UTF-8")+"/"+
-                    URLEncoder.encode(id_escuela, "UTF-8")+"/"+URLEncoder.encode(id_oficial, "UTF-8")+
-                    "/"+URLEncoder.encode(pendiente, "UTF-8")+"/"+URLEncoder.encode(id_motivo.toString(), "UTF-8"));*/
+
         String insert = Constantes.INSERT+fecha+"/"+id_escuela+"/"+id_oficial+"/"+pendiente+"/"+id_motivo.toString();
         Log.d(TAG, Constantes.INSERT+fecha+"/"+id_escuela+"/"+id_oficial+"/"+pendiente+"/"+id_motivo.toString());
 
@@ -295,10 +284,11 @@ public class InsertFragment extends Fragment {
 
     public boolean camposVacios(){
         String fecha = fechaF.getText().toString();
-        String id_escuela = ".";
-        String id_oficial = ".";
+        String pendiente = idPendienteF.getText().toString();
+        String id_oficial = idOficialF.getSelectedItem().toString();
+        String id_escuela = idEscuelaF.getSelectedItem().toString();
 
-        return (fecha.isEmpty() || id_escuela.isEmpty() || id_oficial.isEmpty());
+        return (fecha.isEmpty() || pendiente.isEmpty() || id_escuela.isEmpty() || id_oficial.isEmpty());
     }
 
     public void actualizarFecha(int ano, int mes, int dia) {
